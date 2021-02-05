@@ -2,3 +2,4 @@
 - [ ] FCN
 - [ ] SegNet
 - [ ] UNet
+- [ ] PSPNet
