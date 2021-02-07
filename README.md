@@ -6,3 +6,6 @@
 - [ ] RCNN
 - [ ] Fast RCNN
 - [ ] Faster RCNN
+- [ ] LSTM
+- [ ] GRU
+
