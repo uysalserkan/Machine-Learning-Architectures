@@ -6,7 +6,15 @@ from tensorflow.keras.layers import Conv2D, Dense, Flatten, MaxPooling2D, Averag
 
 def encoder_block(input_layer, kernels, filters, pad, pool_size):
     """
-    Buraya açıklama gelecek. Park etmeyiniz..
+    Params:
+      input_layer: Required.
+      kernels: Required.
+      filters: Required.
+      pad: Required.
+      pool_size: Required.
+
+    Returns:
+      A keras layer.
     """
     x = ZeroPadding2D(padding=pad)(input_layer)
     # ? same -> valid olabilir.
@@ -20,7 +28,13 @@ def encoder_block(input_layer, kernels, filters, pad, pool_size):
 
 def Encoder(img_height=224, img_width=224, channels=3):
     """
-    Açıklama buraya gelecek.
+    Params:
+      img_height: Default=224
+      img_width: Default=224
+      channels: Default=3
+
+    Returns:
+      An Input layer and Encoded layers.
     """
 
     # Local function variables
@@ -50,7 +64,11 @@ def Encoder(img_height=224, img_width=224, channels=3):
 
 def Decoder(encoder_levels, class_size=12):
     """
-    Buraya açıklama gelecek.
+    Params:
+      encoder_levels: Required.
+      class_size: Default=12
+    Returns:
+      Last output layer.
     """
     T_KERNEL_SIZE = (4, 4)
     T_STRIDES = (2, 2)
@@ -94,6 +112,17 @@ def Decoder(encoder_levels, class_size=12):
 
 
 def FCN8(class_size, img_height=224, img_width=224, channels=3):
+    """
+    Params:
+      class_size: Required parameter.
+      img_height: Default=224
+      img_width: Default=224
+      channels: Default=3
+
+    Returns:
+      A Keras Model.
+
+    """
     img_input, encoded_levels = Encoder(
         img_height=img_height, img_width=img_width, channels=channels)
     output = Decoder(encoder_levels=encoded_levels, class_size=12)
