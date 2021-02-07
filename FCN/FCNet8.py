@@ -10,7 +10,7 @@ def encoder_block(input_layer, kernels, filters, pad, pool_size):
     """
     x = ZeroPadding2D(padding=pad)(input_layer)
     # ? same -> valid olabilir.
-    x = Conv2D(filters=filters, kernel_size=kernels, padding='same')(x)
+    x = Conv2D(filters=filters, kernel_size=kernels, padding='valid')(x)
     x = BatchNormalization()(x)
     x = Activation('relu')(x)
     x = MaxPooling2D(pool_size=pool_size)(x)
@@ -37,7 +37,7 @@ def Encoder(img_height=224, img_width=224, channels=3):
     # F1, F2, F3, F4, F5 blocks.
     for FILTER_SIZE in FILTER_SIZES:
         x = encoder_block(
-            input_layer=img_input,
+            input_layer=x,
             filters=FILTER_SIZE,
             kernels=(KERNEL, KERNEL),
             pool_size=(POOL_SIZE, POOL_SIZE),
@@ -103,3 +103,5 @@ def FCN8(class_size, img_height=224, img_width=224, channels=3):
 
 
 model = FCN8(12)
+
+print(model.summary())
