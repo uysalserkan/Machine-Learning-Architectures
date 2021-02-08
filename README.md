@@ -9,9 +9,10 @@
 - 6. [ ] VGG `FCN32`
 - [ ] SegNet
 - [ ] UNet
-- [ ] PSPNet
+- [x] PSPNet
 - [ ] RCNN
 - [ ] Fast RCNN
 - [ ] Faster RCNN
 - [ ] LSTM
 - [ ] GRU
+- [ ] JNN
